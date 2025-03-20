@@ -1,18 +1,8 @@
-﻿using BepInEx;
-using BepInEx.Bootstrap;
-using EFT;
-using EFT.HealthSystem;
-using EFT.Interactive;
-using EFT.InventoryLogic;
+﻿using EFT.HealthSystem;
 using OneVersusOne.Services;
 using SPT.Reflection.Patching;
-using SPT.Reflection.Utils;
 using System;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using UnityEngine;
 
 namespace OneVersusOne.Patches
 {
@@ -37,6 +27,21 @@ namespace OneVersusOne.Patches
                 if (__instance.Player.IsYourPlayer)
                 {
                     OneVersusOneService.HealAndTeleport(__instance.Player);
+
+                    MineDirectional[] AllMines = UnityEngine.Object.FindObjectsOfType<MineDirectional>();
+
+                    foreach (var item in AllMines)
+                    {
+                        var bool_1field = item.GetType().GetField("bool_1", BindingFlags.NonPublic | BindingFlags.Instance);
+
+                        if (bool_1field != null && (bool)bool_1field.GetValue(item) == true)
+                        {
+                            bool_1field.SetValue(item, false);
+
+                            item.SetArmed(true);
+                            item.gameObject.SetActive(true);
+                        }
+                    }
                 }
 
                 __instance.method_34(LastDamageInfo.DamageType);

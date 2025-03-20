@@ -1,20 +1,10 @@
-﻿using BepInEx;
-using Comfort.Common;
+﻿using Comfort.Common;
 using EFT;
-using EFT.HealthSystem;
-using EFT.Interactive;
-using EFT.InventoryLogic;
 using Fika.Core.Coop.ObservedClasses;
-using Fika.Core.Coop.HostClasses;
-using Fika.Core.Coop.Players;
 using OneVersusOne.Services;
 using SPT.Reflection.Patching;
-using SPT.Reflection.Utils;
 using System;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace OneVersusOne.Patches
