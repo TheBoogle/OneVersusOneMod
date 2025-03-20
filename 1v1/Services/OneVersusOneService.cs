@@ -66,7 +66,6 @@ namespace OneVersusOne.Services
                 HealthController.method_18(BodyPart, (ignore) => true);
             }
 
-            HealthController.DoPainKiller();
             HealthController.RestoreFullHealth();
 
             player.MovementContext.RemoveStateSpeedLimit(Player.ESpeedLimit.HealthCondition);
@@ -81,6 +80,8 @@ namespace OneVersusOne.Services
                 }
 
                 HealthController.RestoreFullHealth();
+
+                HealthController.DoPainKiller();
 
                 player.MovementContext.RemoveStateSpeedLimit(Player.ESpeedLimit.HealthCondition);
             });
