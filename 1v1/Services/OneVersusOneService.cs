@@ -12,6 +12,7 @@ using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 using SPT.Common.Http;
 using OneVersusOne.Patches;
+using System.Reflection;
 
 namespace OneVersusOne.Services
 {
@@ -84,6 +85,21 @@ namespace OneVersusOne.Services
                 HealthController.DoPainKiller();
 
                 player.MovementContext.RemoveStateSpeedLimit(Player.ESpeedLimit.HealthCondition);
+
+                //MineDirectional[] AllMines = UnityEngine.Object.FindObjectsOfType<MineDirectional>();
+
+                //foreach (var item in AllMines)
+                //{
+                //    var bool_1field = item.GetType().GetField("bool_1", BindingFlags.NonPublic | BindingFlags.Instance);
+
+                //    if (bool_1field != null && (bool)bool_1field.GetValue(item) == true)
+                //    {
+                //        bool_1field.SetValue(item, false);
+
+                //        item.SetArmed(true);
+                //        item.gameObject.SetActive(true);
+                //    }
+                //}
             });
         }
 
